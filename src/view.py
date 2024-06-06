@@ -34,16 +34,11 @@ class Window(QDialog):
         self._start.setStyleSheet("background-color: #1A9725")
         self._start.clicked.connect(self.click_start)
 
-        # self._pause = QPushButton("Pause")
-        # self._pause.setStyleSheet("background-color: #084EE5")
-        # self._pause.clicked.connect(self.click_pause)
-
         self._reset = QPushButton("Reset")
         self._reset.setStyleSheet("background-color: #F34E2B")
         self._reset.clicked.connect(self.click_reset)
 
         self._layout.addWidget(self._start, 1, 0)
-        # self._layout.addWidget(self._pause, 1, 1)
         self._layout.addWidget(self._reset, 1, 1)
 
         self.setLayout(self._layout)

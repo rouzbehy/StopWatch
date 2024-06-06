@@ -28,23 +28,23 @@ class Window(QDialog):
         self._label = QLabel("00:00:00")
         self._label.setStyleSheet("font-size: 42px; ")
         self._label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self._layout.addWidget(self._label, 0, 0, 1, 3)
+        self._layout.addWidget(self._label, 0, 0, 1, 2)
 
         self._start = QPushButton("Start")
         self._start.setStyleSheet("background-color: #1A9725")
         self._start.clicked.connect(self.click_start)
 
-        self._pause = QPushButton("Pause")
-        self._pause.setStyleSheet("background-color: #084EE5")
-        self._pause.clicked.connect(self.click_pause)
+        # self._pause = QPushButton("Pause")
+        # self._pause.setStyleSheet("background-color: #084EE5")
+        # self._pause.clicked.connect(self.click_pause)
 
         self._reset = QPushButton("Reset")
         self._reset.setStyleSheet("background-color: #F34E2B")
         self._reset.clicked.connect(self.click_reset)
 
         self._layout.addWidget(self._start, 1, 0)
-        self._layout.addWidget(self._pause, 1, 1)
-        self._layout.addWidget(self._reset, 1, 2)
+        # self._layout.addWidget(self._pause, 1, 1)
+        self._layout.addWidget(self._reset, 1, 1)
 
         self.setLayout(self._layout)
 
@@ -68,9 +68,14 @@ class Window(QDialog):
     def click_start(self):
         self._timer.start()
         self._start.clicked.disconnect()
+        self._start.setText("Pause")
+        self._start.setStyleSheet("background-color: #084EE5")
+        self._start.clicked.connect(self.click_pause)
 
     def click_pause(self):
         self._timer.stop()
+        self._start.setText("Start")
+        self._start.setStyleSheet("background-color: #1A9725")
         self._start.clicked.connect(self.click_start)
 
     def click_reset(self):
